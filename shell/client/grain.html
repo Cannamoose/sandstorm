@@ -37,9 +37,10 @@
             used for testing purposes. --}}
       <iframe data-grainid="{{grainId}}" id="grain-frame-{{grainId}}" class="grain-frame" src="{{appOrigin}}/_sandstorm-init?sessionid={{sessionId}}&path={{originalPath}}"></iframe>
       {{#with signinOverlay}}
-        <div class="signin-frame" style="left: {{left}}px; top: {{top}}px">
-          {{> loginButtonsDialog globalAccountsUi}}
-        </div>
+        {{!-- TODO(now): use label --}}
+        {{#modalDialogWithBackdrop class="signin" onDismiss=closeSignInOverlay}}
+          {{> loginButtonsDialog label=label accountsUi=globalAccountsUi}}
+        {{/modalDialogWithBackdrop}}
       {{/with}}
       {{#if hasNotLoaded}}
         {{> _grainSpinner ""}}
